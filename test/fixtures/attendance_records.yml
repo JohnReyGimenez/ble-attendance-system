@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  status: MyString
+  timestamp: 2025-10-08 22:50:27
+
+two:
+  student: two
+  status: MyString
+  timestamp: 2025-10-08 22:50:27

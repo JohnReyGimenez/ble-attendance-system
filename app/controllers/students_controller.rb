@@ -33,6 +33,18 @@ class StudentsController < ApplicationController
     head :no_content
   end
 
+  def assign_tag
+    @student = Student.find(params[:id])
+    @tag = Tag.find_by(id: params[:tag_id])
+
+    unless @tag
+      render json: { error: "Tag not found" }, status: :not_found and return
+    end
+
+    @tag.update!(student: @student)
+    render json: { student: @student, tag: @tag }
+  end
+
   private
 
   def student_params

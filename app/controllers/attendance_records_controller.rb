@@ -45,7 +45,7 @@ class AttendanceRecordsController < ApplicationController
 
   def update
     @attendance_records = AttendanceRecord.find(params[:id])
-    @secretMenuItem.update(
+    @attendance_records.update(
       timestamp: params[:timestamp],
       status: params[:status],
       student: params[:student]
@@ -54,9 +54,8 @@ class AttendanceRecordsController < ApplicationController
   end
 
   def destroy
-    @attendance_records = AttendanceRecord.all
     @attendance_records = AttendanceRecord.find(params[:id])
     @attendance_records.destroy
-     render json: @attendance_records
+    render json: @attendance_records
   end
 end

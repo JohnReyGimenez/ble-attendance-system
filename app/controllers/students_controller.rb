@@ -45,6 +45,18 @@ class StudentsController < ApplicationController
     render json: { student: @student, tag: @tag }
   end
 
+  def unassign_tag
+    @student = Student.find(params[:id])
+    @tag = @student.tag
+    
+    unless @tag
+      render json: { error: "No tag assigned to this student" }, status: :not_found and return
+    end
+
+    @tag.update!(student: nil)
+    render json: { student: @student, tag: @tag }
+  end
+
   private
 
   def student_params

@@ -47,8 +47,8 @@ class AttendanceRecordsController < ApplicationController
     @attendance_records = AttendanceRecord.find(params[:id])
     @attendance_records.update(
       timestamp: params[:timestamp],
-      status: params[:status],
-      student: params[:student]
+      event_type: params[:event_type],
+      mac_address: params[:mac_address]
     )
     render json: @attendance_records
   end

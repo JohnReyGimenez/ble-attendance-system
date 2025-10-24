@@ -17,7 +17,8 @@ module Api
         # Create attendance record for the linked student
         attendance = AttendanceRecord.new(
           student: tag.student,
-          status: params[:event_type],  # "entered" or "exited"
+          mac_address: params[:mac_address],
+          event_type: params[:event_type],  # "entered" or "exited"
           timestamp: params[:timestamp]
         )
 
@@ -25,8 +26,8 @@ module Api
           render json: {
             message: "Attendance recorded successfully!",
             student: tag.student.name,
-            status: attendance.status,
-            time: attendance.timestamp
+            event_type: attendance.event_type,
+            timestamp: attendance.timestamp
           }, status: :created
         else
           render json: { errors: attendance.errors.full_messages }, status: :unprocessable_entity

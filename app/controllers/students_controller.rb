@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
   def unassign_tag
     @student = Student.find(params[:id])
     @tag = @student.tag
-    
+
     unless @tag
       render json: { error: "No tag assigned to this student" }, status: :not_found and return
     end
